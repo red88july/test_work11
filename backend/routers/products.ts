@@ -51,27 +51,3 @@ productsRouter.get('/', async (req, res, next) => {
     }
 
 });
-//
-// postsRouter.get('/:id', async (req, res, next) => {
-//
-//     try {
-//
-//         let _id: Types.ObjectId;
-//
-//         try {
-//             _id = new Types.ObjectId(req.params.id);
-//         } catch (e) {
-//             return res.status(404).send({error: 'Wrong ObjectId'});
-//         }
-//
-//         const getPostById = await Post.findById(_id)
-//             .populate({path: 'user', select: 'username'});
-//
-//
-//         return res.send(getPostById);
-//
-//     } catch (e) {
-//         next(e);
-//     }
-//
-// });

@@ -1,4 +1,5 @@
 import { AppBar, Container, Grid, Link, Toolbar, Typography } from '@mui/material';
+import GuestMenu from './GuestMenu.tsx';
 
 const MainNav = {
   color: 'inherit',
@@ -18,10 +19,11 @@ const AppToolbar = () => {
           <Grid container justifyContent="space-between" alignItems="center">
             <Typography variant="h4" component="div" sx={{flexGrow: 1}}>
               <Link href="/" sx={MainNav}>
-                TestWork11
+                Computer Magazine
               </Link>
             </Typography>
           </Grid>
+          <GuestMenu />
         </Toolbar>
       </Container>
     </AppBar>
