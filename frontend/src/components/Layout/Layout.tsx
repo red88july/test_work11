@@ -2,8 +2,6 @@ import { PropsWithChildren } from 'react';
 import AppToolbar from '../UI/AppToolbar/AppToolbar';
 import { Box, Link, Typography } from '@mui/material';
 
-
-
 const Layout: React.FC<PropsWithChildren> = ({children}) => {
   return (
     <>

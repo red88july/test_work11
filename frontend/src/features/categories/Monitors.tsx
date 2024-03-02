@@ -2,7 +2,7 @@ import {Alert, Box, CardMedia, CircularProgress, Container, Link, Typography} fr
 import React, { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../../app/hooks.ts';
-import {getAllProducts, isErrorLoadProducts, isLoadProducts} from '../products/productsSlice.ts';
+import { getAllProducts, isErrorLoadProducts, isLoadProducts } from '../products/productsSlice.ts';
 import { getProducts } from '../products/productsThunk.ts';
 
 import { apiURL } from '../../constants.ts';

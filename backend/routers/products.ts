@@ -3,7 +3,6 @@ import {Router} from 'express';
 
 import auth, {RequestUser} from "../middleware/auth";
 import {ProductDataTypes} from "../types";
-import Post from "../models/Product";
 import {imageUpload} from "../multer";
 import Product from "../models/Product";
 

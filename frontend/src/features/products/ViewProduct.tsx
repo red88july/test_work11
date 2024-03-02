@@ -1,15 +1,15 @@
-import { Box, CardMedia, Container, Typography } from '@mui/material';
+import { Box, CardMedia, CircularProgress, Container, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch } from '../../../app/hooks.ts';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks.ts';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import picOfProduct from '../../assets/images/image_not_available.png';
 
 
 import { apiURL } from '../../constants.ts';
-import { selectViewProduct } from './productsSlice.ts';
+import { isLoadViewOne,  selectViewProduct } from './productsSlice.ts';
 import { viewOneProduct } from './productsThunk.ts';
 
 const stylePostBox = {
@@ -26,9 +26,12 @@ const stylePostBox = {
   }
 };
 
-const ViewProduct = () => {
+const ViewProduct: React.FC = () => {
+
   const dispatch = useAppDispatch();
   const viewProduct = useSelector(selectViewProduct);
+
+  const isLoadViewOneProduct = useAppSelector(isLoadViewOne);
 
   let imagePost = picOfProduct;
 
@@ -46,50 +49,52 @@ const ViewProduct = () => {
 
 
   return (
-      <Container maxWidth="sm">
-        <Box marginTop={10}>
-          <Box key={viewProduct?._id} id={viewProduct?._id} sx={stylePostBox}>
-            <Box sx={{display: 'flex', justifyContent: 'center'}}>
-              <CardMedia
-                component="img"
-                sx={{width: '80%', height: 'auto', borderRadius: '10px', border: '3px solid black'}}
-                image={imagePost}
-                alt="message"
-              />
+    <Container maxWidth="sm">
+      {isLoadViewOneProduct && (<Box sx={{display: 'flex', justifyContent: 'center', marginTop: '10rem'}}>
+        <CircularProgress size={100}/></Box>)}
+      <Box marginTop={10}>
+        <Box key={viewProduct?._id} id={viewProduct?._id} sx={stylePostBox}>
+          <Box sx={{display: 'flex', justifyContent: 'center'}}>
+            <CardMedia
+              component="img"
+              sx={{width: '80%', height: 'auto', borderRadius: '10px', border: '3px solid black'}}
+              image={imagePost}
+              alt="message"
+            />
+          </Box>
+          <Box display="flex" flexDirection="column">
+            <Box marginTop={3}>
+              <Typography gutterBottom variant="subtitle2" component="div">
+                <strong>Product: </strong><em>{viewProduct?.title}</em>
+              </Typography>
             </Box>
-            <Box display="flex" flexDirection="column">
-              <Box marginTop={3}>
+            <Box>
+              <Typography gutterBottom variant="subtitle1" component="div">
+                <p style={{textIndent: '25px'}}>{viewProduct?.description}</p>
+              </Typography>
+            </Box>
+            <Box display="flex" flexDirection="column" justifyContent="right" marginBottom={1}>
+              <Box display="flex" flexDirection="column" width="300px">
                 <Typography gutterBottom variant="subtitle2" component="div">
-                  <strong>Product: </strong><em>{viewProduct?.title}</em>
+                  <b>Category: </b><em>{viewProduct?.category}</em>
                 </Typography>
-              </Box>
-              <Box >
-                <Typography gutterBottom variant="subtitle1" component="div">
-                  <p style={{textIndent: '25px'}}>{viewProduct?.description}</p>
+                <Typography gutterBottom variant="subtitle2" component="div">
+                  <b>Price: </b><em>{viewProduct?.price}</em>$
                 </Typography>
-              </Box>
-              <Box display="flex" flexDirection="column" justifyContent="right" marginBottom={1}>
-                <Box display="flex" flexDirection="column" width="300px">
+                <Box marginTop={3}>
                   <Typography gutterBottom variant="subtitle2" component="div">
-                   <b>Category: </b><em>{viewProduct?.category}</em>
+                    <b>Salesman: </b><em>{viewProduct?.user.name}</em>
                   </Typography>
                   <Typography gutterBottom variant="subtitle2" component="div">
-                    <b>Price: </b><em>{viewProduct?.price}</em>$
+                    <b>Phone of salesman: </b><em>{viewProduct?.user.phone}</em>
                   </Typography>
-                  <Box marginTop={3}>
-                    <Typography gutterBottom variant="subtitle2" component="div">
-                      <b>Salesman: </b><em>{viewProduct?.user.name}</em>
-                    </Typography>
-                    <Typography gutterBottom variant="subtitle2" component="div">
-                      <b>Phone of salesman: </b><em>{viewProduct?.user.phone}</em>
-                    </Typography>
-                  </Box>
                 </Box>
               </Box>
             </Box>
           </Box>
         </Box>
-      </Container>
+      </Box>
+    </Container>
   );
 };
 

@@ -70,9 +70,7 @@ const run = async () => {
             category: 'Monitors',
             image: 'fixtures/monitor.jpeg'
         },
-
     ]);
-
 
     await db.close();
 };

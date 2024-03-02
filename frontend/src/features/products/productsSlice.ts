@@ -1,18 +1,16 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import {ProductsMutation, ValidationError} from '../../types';
-import {getProducts, productCreate, viewOneProduct} from './productsThunk.ts';
-import {RootState} from '../../../app/store.ts';
+import { ProductsMutation, ValidationError } from '../../types';
+import { getProducts, productCreate, viewOneProduct } from './productsThunk.ts';
+import { RootState } from '../../../app/store.ts';
 
 interface ProductsState {
   posts: ProductsMutation | null;
   isLoadingProduct: boolean;
   isErrorProduct: ValidationError | null;
-
   allProducts: ProductsMutation[];
   isLoadingProducts: boolean;
   isErrorLoadProducts: boolean;
-
   product: ProductsMutation | null;
   isLoadViewProduct: boolean;
 }
@@ -21,14 +19,11 @@ const initialState: ProductsState = {
   posts: null,
   isLoadingProduct: false,
   isErrorProduct: null,
-
   allProducts: [],
   isLoadingProducts: false,
   isErrorLoadProducts: false,
-
   product: null,
   isLoadViewProduct: false,
-
 };
 
 export const productsSlice = createSlice({
@@ -74,18 +69,14 @@ export const productsSlice = createSlice({
     builder.addCase(viewOneProduct.rejected, (state) => {
       state.isLoadViewProduct = false;
     });
-
   }
 });
 
 export const productsReducer = productsSlice.reducer;
-
 export const loadingProduct = (state: RootState) => state.products.isLoadingProduct;
 export const errorLoadProduct = (state: RootState) => state.products.isErrorProduct;
-
 export const getAllProducts = (state: RootState) => state.products.allProducts;
 export const isLoadProducts = (state: RootState) => state.products.isLoadingProducts;
 export const isErrorLoadProducts = (state: RootState) => state.products.isErrorLoadProducts;
-
-
 export const selectViewProduct = (state: RootState) => state.products.product;
+export const isLoadViewOne = (state: RootState) => state.products.isLoadViewProduct;
