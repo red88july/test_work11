@@ -1,4 +1,4 @@
 const connectToDB = {
-    db: 'mongodb://localhost/forum',
+    db: 'mongodb://localhost/magazine',
 }
 export default connectToDB;

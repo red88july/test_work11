@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import crypto from "crypto";
 import connectToDB from "./connectToDB";
 import User from "./models/User";
-import Post from "./models/Post";
+import Post from "./models/Product";
 import Comment from "./models/Comment";
 
 const dropColletction = async (db: mongoose.Connection, collectionsName: string) => {
@@ -27,11 +27,15 @@ const run = async () => {
         {
             username: 'Petrov',
             password: 'Petrov_123#',
+            name: 'Petrov Aleksej',
+            phone: '+996 702555123',
             token: crypto.randomUUID(),
 
         }, {
             username: 'Ivanov',
             password: 'Ivanov_123#',
+            name: 'Ivanov Sergej',
+            phone: '+996 702555666',
             token: crypto.randomUUID(),
         },
     ]);

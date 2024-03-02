@@ -4,9 +4,7 @@ import cors from 'cors';
 
 import connectToDB from "./connectToDB";
 import { usersRouter } from "./routers/users";
-import { postsRouter } from "./routers/posts";
-import { commentsRouter } from "./routers/comments";
-
+import {productsRouter} from "./routers/products";
 const app = express();
 const port = 8000;
 
@@ -15,8 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/users', usersRouter);
-app.use('/posts', postsRouter);
-app.use('/comments', commentsRouter);
+app.use('/products', productsRouter);
 
 const run = async () => {
 

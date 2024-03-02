@@ -1,8 +1,7 @@
 import { Schema, model, Types } from "mongoose";
 import User from "./User";
-import Post from "./Post";
 
-const CommentSchema = new Schema({
+const ProductSchema = new Schema({
 
     user: {
         type: Schema.Types.ObjectId,
@@ -16,22 +15,28 @@ const CommentSchema = new Schema({
         }
     },
 
-    post: {
-        type: Schema.Types.ObjectId,
-        ref: 'Post',
+    title: {
+        type: String,
         required: true,
-        validate: {
-            validator: async (value: Types.ObjectId) => {
-                const post = await Post.findById(value);
-                return Boolean(post);
-            }
-        }
     },
 
-    comment: String,
+    description: String,
+
+    price: {
+        type: Number,
+        required: true,
+    },
+
+    category: {
+        type: String,
+        required: true,
+    },
+
+    image: String,
+
 
 }, { versionKey: false });
 
-const Comment = model('Comment', CommentSchema);
+const Product = model('Product', ProductSchema);
 
-export default Comment;
+export default Product;

@@ -38,6 +38,16 @@ const UserSchema = new Schema<UserDataExtendsSchema, UserMethods, UserModel>({
         required: true,
     },
 
+    name: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    phone: {
+        type: String,
+        required: true,
+    },
+
 }, { versionKey: false });
 
 UserSchema.methods.generatedToken = function () {
