@@ -5,6 +5,7 @@ import auth, {RequestUser} from "../middleware/auth";
 import {ProductDataTypes} from "../types";
 import Post from "../models/Product";
 import {imageUpload} from "../multer";
+import Product from "../models/Product";
 
 export const productsRouter = Router();
 
@@ -38,18 +39,18 @@ productsRouter.post('/', auth, imageUpload.single('image'), async (req: RequestU
 
 });
 
-// postsRouter.get('/', async (req, res, next) => {
-//
-//     try {
-//
-//         const getPosts = await Post.find().populate({path: 'user', select: 'username'}).sort({datetime: -1});
-//         return res.send(getPosts);
-//
-//     } catch (e) {
-//         next(e);
-//     }
-//
-// });
+productsRouter.get('/', async (req, res, next) => {
+
+    try {
+
+        const getProduct = await Product.find();
+        return res.send(getProduct);
+
+    } catch (e) {
+        next(e);
+    }
+
+});
 //
 // postsRouter.get('/:id', async (req, res, next) => {
 //
