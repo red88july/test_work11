@@ -48,11 +48,11 @@ export const getProducts = createAsyncThunk<ProductsMutation[]>(
     return response.data;
   }
 );
-//
-// export const viewOnePost = createAsyncThunk<Products, string>(
-//   'posts/viewOnePost',
-//   async (id) => {
-//     const response = await axiosApi.get('/posts/' + id);
-//     return response.data;
-//   }
-// );
+
+export const viewOneProduct = createAsyncThunk<ProductsMutation, string>(
+  'products/viewOneProduct',
+  async (id) => {
+    const response = await axiosApi.get('/products/' + id);
+    return response.data;
+  }
+);

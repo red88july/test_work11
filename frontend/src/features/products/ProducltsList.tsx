@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, CardMedia, Typography } from '@mui/material';
+import {Box, CardMedia, Link, Typography} from '@mui/material';
 
 import { apiURL } from '../../constants.ts';
 import picOfProduct from '../../assets/images/image_not_available.png';
@@ -29,6 +29,7 @@ interface Props {
 const ProductsList: React.FC<Props> = ({id, title, price, image}) => {
   let imageProduct = picOfProduct;
 
+
   if (image) {
     imageProduct = apiURL + '/' + image;
   }
@@ -52,6 +53,7 @@ const ProductsList: React.FC<Props> = ({id, title, price, image}) => {
               <b>Price: </b><em>{price}</em>$
             </Typography>
           </Box>
+        <Link href={`/products/${id}`}>More details</Link>
       </Box>
     </Box>
   );

@@ -1,4 +1,4 @@
-import {Alert, Box, CardMedia, CircularProgress, Container, Typography} from '@mui/material';
+import {Alert, Box, CardMedia, CircularProgress, Container, Link, Typography} from '@mui/material';
 import React, {useEffect} from 'react';
 
 import {useAppDispatch, useAppSelector} from '../../../app/hooks.ts';
@@ -66,6 +66,7 @@ const Gpu: React.FC = () => {
                 <b>Price: </b><em>{product.price}</em>$
               </Typography>
             </Box>
+            <Link href={`/products/${product._id}`}>More details</Link>
           </Box>
         ))}
       </Box>

@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 import {ProductsMutation, ValidationError} from '../../types';
-import {getProducts, productCreate} from './productsThunk.ts';
+import {getProducts, productCreate, viewOneProduct} from './productsThunk.ts';
 import {RootState} from '../../../app/store.ts';
 
 interface ProductsState {
@@ -12,6 +12,9 @@ interface ProductsState {
   allProducts: ProductsMutation[];
   isLoadingProducts: boolean;
   isErrorLoadProducts: boolean;
+
+  product: ProductsMutation | null;
+  isLoadViewProduct: boolean;
 }
 
 const initialState: ProductsState = {
@@ -22,6 +25,10 @@ const initialState: ProductsState = {
   allProducts: [],
   isLoadingProducts: false,
   isErrorLoadProducts: false,
+
+  product: null,
+  isLoadViewProduct: false,
+
 };
 
 export const productsSlice = createSlice({
@@ -56,17 +63,17 @@ export const productsSlice = createSlice({
       state.isLoadingProducts = false;
       state.isErrorLoadProducts = true;
     });
-    //
-    // builder.addCase(viewOnePost.pending, (state) => {
-    //   state.isLoadViewPost = true;
-    // });
-    // builder.addCase(viewOnePost.fulfilled, (state, {payload: post}: PayloadAction<Products>) => {
-    //   state.isLoadViewPost = false;
-    //   state.post = post;
-    // });
-    // builder.addCase(viewOnePost.rejected, (state) => {
-    //   state.isLoadViewPost = false;
-    // });
+
+    builder.addCase(viewOneProduct.pending, (state) => {
+      state.isLoadViewProduct = true;
+    });
+    builder.addCase(viewOneProduct.fulfilled, (state, {payload: data}: PayloadAction<ProductsMutation>) => {
+      state.isLoadViewProduct = false;
+      state.product = data;
+    });
+    builder.addCase(viewOneProduct.rejected, (state) => {
+      state.isLoadViewProduct = false;
+    });
 
   }
 });
@@ -81,4 +88,4 @@ export const isLoadProducts = (state: RootState) => state.products.isLoadingProd
 export const isErrorLoadProducts = (state: RootState) => state.products.isErrorLoadProducts;
 
 
-// export const selectViewPost = (state: RootState) => state.posts.post;
+export const selectViewPost = (state: RootState) => state.products.product;
