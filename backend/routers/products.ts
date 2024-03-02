@@ -39,7 +39,7 @@ productsRouter.post('/', auth, imageUpload.single('image'), async (req: RequestU
 
 });
 
-productsRouter.get('/', async (req, res, next) => {
+productsRouter.get('/', async (_req, res, next) => {
 
     try {
 

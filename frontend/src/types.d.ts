@@ -44,6 +44,14 @@ export interface GlobalError {
   message: string;
 }
 
+export interface Product {
+  title: string;
+  description: string;
+  price: number;
+  category: string;
+  image: File | null;
+}
+
 export interface ProductsMutation {
   _id: string;
   user: User;
@@ -53,22 +61,3 @@ export interface ProductsMutation {
   category: string;
   image: string | null;
 }
-
-export interface Product {
-  title: string;
-  description: string;
-  price: number;
-  category: string;
-  image: File | null;
-}
-
-// export type ApiUser = Omit<User, 'token'>;
-//
-// export interface Posts {
-//   _id: string;
-//   user: ApiUser;
-//   title: string;
-//   description: string;
-//   image: null | string;
-//   datetime: string;
-// }

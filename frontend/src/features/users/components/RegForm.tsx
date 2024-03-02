@@ -13,10 +13,10 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { registration } from './usersThunk.ts';
-import {isRegisterError, isRegisterUser} from './usersSlice.ts';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks.ts';
-import { Registration } from '../../types';
+import { registration } from '../usersThunk.ts';
+import {isRegisterError, isRegisterUser} from '../usersSlice.ts';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks.ts';
+import { Registration } from '../../../types';
 
 
 const RegForm = () => {

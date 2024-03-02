@@ -51,7 +51,7 @@ const UserMenu: React.FC<Props> = ({user}) => {
       <Box display="flex" alignItems="center">
         <Box>
           <Button color="inherit" onClick={handleClick}>
-            Hello, {user.name}!
+            Hello, <b>{user.name}</b>!
           </Button>
         </Box>
         <Box sx={boxStyleLink}>

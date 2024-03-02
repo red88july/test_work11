@@ -41,16 +41,15 @@ export const productCreate = createAsyncThunk<ProductsMutation, Product, {  reje
   }
 );
 
-
-// export const getPosts = createAsyncThunk<Posts[]>(
-//   'posts/getPosts',
-//   async () => {
-//     const response = await axiosApi.get<Posts []>('/posts');
-//     return response.data;
-//   }
-// );
+export const getProducts = createAsyncThunk<ProductsMutation[]>(
+  'products/getProducts',
+  async () => {
+    const response = await axiosApi.get<ProductsMutation []>('/products');
+    return response.data;
+  }
+);
 //
-// export const viewOnePost = createAsyncThunk<Posts, string>(
+// export const viewOnePost = createAsyncThunk<Products, string>(
 //   'posts/viewOnePost',
 //   async (id) => {
 //     const response = await axiosApi.get('/posts/' + id);

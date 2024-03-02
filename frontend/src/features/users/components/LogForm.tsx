@@ -2,11 +2,11 @@ import { Alert, Avatar, Box, Button, CircularProgress, Container, Grid, Link, Te
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-import { login } from './usersThunk.ts';
-import {isLoginError, isLoginUser} from './usersSlice.ts';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks.ts';
+import { login } from '../usersThunk.ts';
+import {isLoginError, isLoginUser} from '../usersSlice.ts';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks.ts';
 
-import { Login } from '../../types';
+import { Login } from '../../../types';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 

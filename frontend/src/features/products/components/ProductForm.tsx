@@ -1,12 +1,12 @@
 import {Alert, Box, Button, CircularProgress, Container, Grid, MenuItem, TextField} from '@mui/material';
 import React, { useState } from 'react';
 
-import { useAppDispatch } from '../../../app/hooks.ts';
-import {productCreate} from './productsThunk.ts';
+import { useAppDispatch } from '../../../../app/hooks.ts';
+import {productCreate} from '../productsThunk.ts';
 
-import FileInput from '../../components/FileInput/FileInput';
+import FileInput from '../../../components/FileInput/FileInput.tsx';
 import { useSelector } from 'react-redux';
-import {errorLoadProduct, loadingProduct} from './productsSlice.ts';
+import {errorLoadProduct, loadingProduct} from '../productsSlice.ts';
 
 const ProductForm = () => {
 
@@ -22,6 +22,14 @@ const ProductForm = () => {
     image: null,
     price: 0,
   });
+
+  const getfieldError = (fieldError: string) => {
+    try {
+      return isErrorLoadPost?.errors[fieldError].message;
+    } catch {
+      return undefined;
+    }
+  };
 
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {name, value} = e.target;
@@ -83,11 +91,14 @@ const ProductForm = () => {
                   name="title"
                   value={state.title}
                   onChange={inputChangeHandler}
+                  error={Boolean(getfieldError('title'))}
+                  helperText={getfieldError('title')}
                 />
               </Grid>
               <Grid item xs>
                 <TextField
                   fullWidth
+                  required
                   id="description"
                   label="Enter description of product"
                   name="description"
@@ -98,12 +109,13 @@ const ProductForm = () => {
               <Grid item md>
                 <TextField
                   fullWidth
+                  required
                   select
                   id="category" label="Category"
                   value={state.category}
                   onChange={inputChangeHandler}
                   name="category"
-                  required>
+                >
                   <MenuItem value="" disabled>Please select category...</MenuItem>
                   <MenuItem value="SSDs">SSDs</MenuItem>
                   <MenuItem value="GPUs">GPUs</MenuItem>

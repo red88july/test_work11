@@ -34,7 +34,6 @@ const ProductSchema = new Schema({
 
     image: String,
 
-
 }, { versionKey: false });
 
 const Product = model('Product', ProductSchema);

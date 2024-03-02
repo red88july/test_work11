@@ -1,17 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import {GlobalError, ProductsMutation} from '../../types';
-import { productCreate} from './productsThunk.ts';
+import {getProducts, productCreate} from './productsThunk.ts';
 import {RootState} from '../../../app/store.ts';
 
 interface ProductsState {
   posts: ProductsMutation | null;
   isLoadingProduct: boolean;
   isErrorProduct: GlobalError | null;
-  // allPosts: Posts[];
-  // post: Posts | null;
 
-  // isLoadingPosts: boolean;
+  allProducts: ProductsMutation[];
+  isLoadingProducts: boolean;
+  isErrorLoadProducts: boolean;
+  // post: Products | null;
+
   // isLoadViewPost: boolean;
 }
 
@@ -19,11 +21,14 @@ const initialState: ProductsState = {
   posts: null,
   isLoadingProduct: false,
   isErrorProduct: null,
-  // allPosts: [],
+
+  allProducts: [],
+  isLoadingProducts: false,
+  isErrorLoadProducts: false,
+
+  // isLoadViewPost: false,
   // post: null,
   //
-  // isLoadingPosts: false,
-  // isLoadViewPost: false,
 };
 
 export const productsSlice = createSlice({
@@ -46,21 +51,23 @@ export const productsSlice = createSlice({
       state.isErrorProduct = error || null;
     });
 
-    // builder.addCase(getPosts.pending, (state) => {
-    //   state.isLoadingPosts = true;
-    // });
-    // builder.addCase(getPosts.fulfilled, (state, {payload: data}) => {
-    //   state.isLoadingPosts = false;
-    //   state.allPosts = data;
-    // });
-    // builder.addCase(getPosts.rejected, (state) => {
-    //   state.isLoadingPosts = false;
-    // });
+    builder.addCase(getProducts.pending, (state) => {
+      state.isLoadingProducts = true;
+      state.isErrorLoadProducts = false;
+    });
+    builder.addCase(getProducts.fulfilled, (state, {payload: data}) => {
+      state.isLoadingProducts = false;
+      state.allProducts = data;
+    });
+    builder.addCase(getProducts.rejected, (state) => {
+      state.isLoadingProducts = false;
+      state.isErrorLoadProducts = true;
+    });
     //
     // builder.addCase(viewOnePost.pending, (state) => {
     //   state.isLoadViewPost = true;
     // });
-    // builder.addCase(viewOnePost.fulfilled, (state, {payload: post}: PayloadAction<Posts>) => {
+    // builder.addCase(viewOnePost.fulfilled, (state, {payload: post}: PayloadAction<Products>) => {
     //   state.isLoadViewPost = false;
     //   state.post = post;
     // });
@@ -75,8 +82,10 @@ export const productsReducer = productsSlice.reducer;
 
 export const loadingProduct = (state: RootState) => state.products.isLoadingProduct;
 export const errorLoadProduct = (state: RootState) => state.products.isErrorProduct;
-//
-// export const getAllPost = (state: RootState) => state.posts.allPosts;
-// export const isLoadPosts = (state: RootState) => state.posts.isLoadingPosts;
-//
+
+export const getAllProducts = (state: RootState) => state.products.allProducts;
+export const isLoadProducts = (state: RootState) => state.products.isLoadingProducts;
+export const isErrorLoadProducts = (state: RootState) => state.products.isErrorLoadProducts;
+
+
 // export const selectViewPost = (state: RootState) => state.posts.post;
