@@ -56,7 +56,7 @@ const UserMenu: React.FC<Props> = ({user}) => {
         </Box>
         <Box sx={boxStyleLink}>
           <Link href="/new-product" sx={addPost}>
-            Add new product
+            Add new item
           </Link>
         </Box>
       </Box>

@@ -20,12 +20,12 @@ productsRouter.post('/', auth, imageUpload.single('image'), async (req: RequestU
             user: req.user,
             title: req.body.title,
             description: req.body.description,
-            price: req.body.price,
+            price: parseInt(req.body.price),
             category: req.body.category,
             image: req.file ? req.file.filename : null,
         };
 
-        const newProduct = new Post(productData);
+        const newProduct = new Product(productData);
         await newProduct.save();
 
         res.send(newProduct);

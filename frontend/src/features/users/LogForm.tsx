@@ -14,7 +14,6 @@ const LogForm = () => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  // const userDetails = useAppSelector(selectUserDetails);
 
   const loadingLogin = useAppSelector(isLoginUser);
   const errorLogin = useAppSelector(isLoginError);

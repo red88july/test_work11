@@ -22,14 +22,13 @@ const AppToolbar = () => {
       <Container maxWidth="xl">
         <Toolbar>
           <Grid container justifyContent="space-between" alignItems="center">
-            <Typography variant="h4" component="div" sx={{flexGrow: 1}}>
+            <Typography variant="h4" component="div">
               <Link href="/" sx={MainNav}>
                 Computer Magazine
               </Link>
             </Typography>
+            {user ? (<UserMenu user={user} />) : <GuestMenu /> }
           </Grid>
-          {user ? (<UserMenu user={user} />) : <GuestMenu /> }
-
         </Toolbar>
       </Container>
     </AppBar>

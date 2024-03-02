@@ -4,6 +4,7 @@ import {Route, Routes} from 'react-router-dom';
 import RegForm from './features/users/RegForm.tsx';
 import {Box} from '@mui/material';
 import LogForm from './features/users/LogForm.tsx';
+import ProductForm from './features/products/ProductForm.tsx';
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
           {/*<Route path="/" element={(<Posts />)}/>*/}
           <Route path="/register" element={(<RegForm />)}/>
           <Route path="/login" element={(<LogForm />)}/>
-          {/*<Route path="/new-post" element={(<PostForm />)}/>*/}
+          <Route path="/new-product" element={(<ProductForm />)}/>
           {/*<Route path="posts/:id" element={(<ViewPost />)}/>*/}
           <Route path="*" element={(
             <Box

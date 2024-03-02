@@ -44,32 +44,31 @@ export interface GlobalError {
   message: string;
 }
 
-export interface PostMutation {
+export interface ProductsMutation {
   _id: string;
-  user: {
-    _id: string;
-    username: string;
-    token: string;
-  };
+  user: User;
   title: string;
   description: string;
+  price: number;
+  category: string;
   image: string | null;
-  datetime: string;
 }
 
-export interface Post {
+export interface Product {
   title: string;
   description: string;
+  price: number;
+  category: string;
   image: File | null;
 }
 
-export type ApiUser = Omit<User, 'token'>;
-
-export interface Posts {
-  _id: string;
-  user: ApiUser;
-  title: string;
-  description: string;
-  image: null | string;
-  datetime: string;
-}
+// export type ApiUser = Omit<User, 'token'>;
+//
+// export interface Posts {
+//   _id: string;
+//   user: ApiUser;
+//   title: string;
+//   description: string;
+//   image: null | string;
+//   datetime: string;
+// }
