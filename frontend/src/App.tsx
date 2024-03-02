@@ -1,11 +1,15 @@
 import PageNoFoundPicture from '../src/assets/images/404PageNotFound.jpg';
-import Layout from './components/Layout/Layout.tsx';
+import Layout from './components/Layout/Layout';
 import {Route, Routes} from 'react-router-dom';
-import RegForm from './features/users/components/RegForm.tsx';
+import RegForm from './features/users/components/RegForm';
 import {Box} from '@mui/material';
-import LogForm from './features/users/components/LogForm.tsx';
-import ProductForm from './features/products/components/ProductForm.tsx';
-import Products from './features/products/Products.tsx';
+import LogForm from './features/users/components/LogForm';
+import ProductForm from './features/products/components/ProductForm';
+import Products from './features/products/Products';
+import Gpu from './features/categories/Gpu';
+import Ssd from './features/categories/Ssd';
+import Monitors from './features/categories/Monitors';
+import Printers from './features/categories/Printers';
 
 function App() {
 
@@ -14,11 +18,14 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={(<Products />)}/>
-          <Route path="/all-items" element={(<Products />)}/>
           <Route path="/register" element={(<RegForm />)}/>
           <Route path="/login" element={(<LogForm />)}/>
           <Route path="/new-product" element={(<ProductForm />)}/>
-          {/*<Route path="posts/:id" element={(<ViewPost />)}/>*/}
+          <Route path="/all-items" element={(<Products />)}/>
+          <Route path="/GPUs" element={(<Gpu />)}/>
+          <Route path="/SSDs" element={(<Ssd />)}/>
+          <Route path="/monitors" element={(<Monitors />)}/>
+          <Route path="/printers" element={(<Printers />)}/>
           <Route path="*" element={(
             <Box
               sx={{display: "flex", alignItems:'center',

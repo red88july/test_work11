@@ -18,23 +18,24 @@ const Products = () => {
   }, [dispatch]);
 
   return (
-    <Container maxWidth="md" sx={{marginTop: 15}}>
+    <Container maxWidth="md" sx={{marginTop: 15}} >
       {loadingProducts && (<Box sx={{display: 'flex', justifyContent: 'center'}}>
         <CircularProgress size={100}/></Box>)}
       {errorLoadingProducts &&
         <Alert severity="warning">
           Loading data is impossible!
         </Alert>}
-      {products.map(product => (
-        <ProductsList
-          id={product._id}
-          key={product._id}
-          title={product.title}
-          price={product.price}
-          image={product.image}
-        />
-      ))}
-
+      <Box display="flex" gap={1} flexWrap="wrap">
+        {products.map(product => (
+          <ProductsList
+            id={product._id}
+            key={product._id}
+            title={product.title}
+            price={product.price}
+            image={product.image}
+          />
+        ))}
+      </Box>
     </Container>
   );
 };

@@ -8,6 +8,8 @@ const stylePostBox = {
   border: '2px solid #42a5f5',
   display: 'flex',
   padding: '5px',
+  width: '250px',
+  flexDirection: 'column',
   alignItems: 'center',
   marginBottom: '10px',
   background: 'linear-gradient(90deg, rgba(0,224,255,0.24413515406162467) 0%, rgba(255,255,255,1) 100%)',
@@ -41,23 +43,14 @@ const ProductsList: React.FC<Props> = ({id, title, price, image}) => {
             alt={title}
           />
         </Box>
-        <Box display="flex" flexDirection="column" marginLeft={5} width="400px">
-          <Box display="flex" justifyContent="space-between" alignItems="center" marginBottom={1}>
+          <Box display="flex" flexDirection="column" alignItems="center" marginBottom={1}>
             <Typography gutterBottom variant="subtitle2" component="div">
               <em>{title}</em>
             </Typography>
             <Typography gutterBottom variant="subtitle2" component="div">
-              <em>{price}</em>
+              <b>Price: </b><em>{price}</em>$
             </Typography>
           </Box>
-          {/*<Box>*/}
-          {/*  <Typography gutterBottom variant="h6" sx={picTitle} component="div">*/}
-          {/*    <Link href={`posts/${id}`}>*/}
-          {/*      <strong>{title}</strong>*/}
-          {/*    </Link>*/}
-          {/*  </Typography>*/}
-          {/*</Box>*/}
-        </Box>
       </Box>
     </Box>
   );

@@ -68,7 +68,7 @@ const run = async () => {
             description: 'Создан соверешенным для гейминга',
             price: '500',
             category: 'Monitors',
-            image: 'fixtures/monitor.jpg'
+            image: 'fixtures/monitor.jpeg'
         },
 
     ]);
