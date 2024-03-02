@@ -9,14 +9,14 @@ import {
   TextField,
   Typography
 } from '@mui/material';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import {Link as RouterLink, useNavigate} from 'react-router-dom';
+import {useState} from 'react';
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { registration } from '../usersThunk.ts';
+import {registration} from '../usersThunk.ts';
 import {isRegisterError, isRegisterUser} from '../usersSlice.ts';
-import { useAppDispatch, useAppSelector } from '../../../../app/hooks.ts';
-import { Registration } from '../../../types';
+import {useAppDispatch, useAppSelector} from '../../../../app/hooks.ts';
+import {Registration} from '../../../types';
 
 
 const RegForm = () => {
@@ -68,9 +68,7 @@ const RegForm = () => {
         };
       });
 
-      setTimeout(()=> {
-        navigate('/');
-      }, 1600);
+      navigate('/');
 
     } catch (e) {
       //error
@@ -154,7 +152,7 @@ const RegForm = () => {
             sx={{mt: 3, mb: 2}}
             disabled={loadingRegisteredUser}
           >
-            {loadingRegisteredUser ? <CircularProgress /> : 'Register'}
+            {loadingRegisteredUser ? <CircularProgress/> : 'Register'}
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>

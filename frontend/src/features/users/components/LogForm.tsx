@@ -1,12 +1,23 @@
-import { Alert, Avatar, Box, Button, CircularProgress, Container, Grid, Link, TextField, Typography } from '@mui/material';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import {
+  Alert,
+  Avatar,
+  Box,
+  Button,
+  CircularProgress,
+  Container,
+  Grid,
+  Link,
+  TextField,
+  Typography
+} from '@mui/material';
+import {Link as RouterLink, useNavigate} from 'react-router-dom';
+import {useState} from 'react';
 
-import { login } from '../usersThunk.ts';
+import {login} from '../usersThunk.ts';
 import {isLoginError, isLoginUser} from '../usersSlice.ts';
-import { useAppDispatch, useAppSelector } from '../../../../app/hooks.ts';
+import {useAppDispatch, useAppSelector} from '../../../../app/hooks.ts';
 
-import { Login } from '../../../types';
+import {Login} from '../../../types';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 
@@ -47,9 +58,7 @@ const LogForm = () => {
         };
       });
 
-      setTimeout(()=> {
-        navigate('/');
-      }, 1600);
+      navigate('/');
 
     } catch (e) {
       //error
