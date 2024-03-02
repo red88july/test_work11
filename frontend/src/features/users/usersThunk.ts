@@ -3,9 +3,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import axiosApi from '../../axiosApi.ts';
 
-// import { RootState } from '../../../app/store.ts';
-// import { unsetUser } from './usersSlice.ts';
 import { GlobalError, Login, LoginResponse, Registration, RegistrationResponse, ValidationError } from '../../types';
+import {unsetUser} from './usersSlice.ts';
+import {RootState} from '../../../app/store.ts';
 
 export const registration = createAsyncThunk<RegistrationResponse, Registration, { rejectValue: ValidationError }>(
   'users/registered',
@@ -40,11 +40,11 @@ export const login = createAsyncThunk<LoginResponse, Login, { rejectValue: Globa
   }
 );
 
-// export const logout = createAsyncThunk<void, undefined, { state: RootState }>(
-//   'users/logout',
-//   async (_, {getState, dispatch}) => {
-//     const token = getState().users.users?.user.token;
-//     await axiosApi.delete('users/sessions', {headers: { 'Authorization': `Bearer:${token}`}});
-//     dispatch(unsetUser());
-//   }
-// );
+export const logout = createAsyncThunk<void, undefined, { state: RootState }>(
+  'users/logout',
+  async (_, {getState, dispatch}) => {
+    const token = getState().users.users?.token;
+    await axiosApi.delete('users/sessions', {headers: { 'Authorization': `Bearer:${token}`}});
+    dispatch(unsetUser());
+  }
+);

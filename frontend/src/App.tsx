@@ -3,6 +3,7 @@ import Layout from './components/Layout/Layout.tsx';
 import {Route, Routes} from 'react-router-dom';
 import RegForm from './features/users/RegForm.tsx';
 import {Box} from '@mui/material';
+import LogForm from './features/users/LogForm.tsx';
 
 function App() {
 
@@ -12,7 +13,7 @@ function App() {
         <Routes>
           {/*<Route path="/" element={(<Posts />)}/>*/}
           <Route path="/register" element={(<RegForm />)}/>
-          {/*<Route path="/login" element={(<LogForm />)}/>*/}
+          <Route path="/login" element={(<LogForm />)}/>
           {/*<Route path="/new-post" element={(<PostForm />)}/>*/}
           {/*<Route path="posts/:id" element={(<ViewPost />)}/>*/}
           <Route path="*" element={(

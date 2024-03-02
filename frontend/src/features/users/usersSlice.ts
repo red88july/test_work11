@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {  registration } from './usersThunk.ts';
+import {login, registration} from './usersThunk.ts';
 import { RootState } from '../../../app/store.ts';
 
 import {GlobalError,  User, ValidationError} from '../../types';
@@ -24,9 +24,9 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    // unsetUser: (state) => {
-    //   state.usersDetails = null;
-    // }
+    unsetUser: (state) => {
+      state.users = null;
+    }
   },
 
   extraReducers: (builder) => {
@@ -43,23 +43,23 @@ export const usersSlice = createSlice({
       state.isErrorRegUser = error || null;
     });
 
-    // builder.addCase(login.pending, (state) => {
-    //   state.isLoggingUser = true;
-    //   state.falseLoggingUser = null;
-    // });
-    // builder.addCase(login.fulfilled, (state, {payload: data}) => {
-    //   state.isLoggingUser = false;
-    //   state.usersDetails = data;
-    // });
-    // builder.addCase(login.rejected, (state, {payload: error}) => {
-    //   state.isLoggingUser = false;
-    //   state.falseLoggingUser = error || null;
-    // });
+    builder.addCase(login.pending, (state) => {
+      state.isLoggingUser = true;
+      state.falseLoggingUser = null;
+    });
+    builder.addCase(login.fulfilled, (state, {payload: data}) => {
+      state.isLoggingUser = false;
+      state.users = data.user;
+    });
+    builder.addCase(login.rejected, (state, {payload: error}) => {
+      state.isLoggingUser = false;
+      state.falseLoggingUser = error || null;
+    });
   }
 });
 
 export const usersReducer = usersSlice.reducer;
-// export const {unsetUser} = usersSlice.actions;
+export const {unsetUser} = usersSlice.actions;
 
 export const selectUser = (state: RootState) => state.users.users;
 export const isRegisterUser = (state: RootState) => state.users.isLoadingRegUser;

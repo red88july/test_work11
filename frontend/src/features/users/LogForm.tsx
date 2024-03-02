@@ -3,7 +3,7 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 import { login } from './usersThunk.ts';
-import {isLoginError, isLoginUser, selectUserDetails} from './usersSlice.ts';
+import {isLoginError, isLoginUser} from './usersSlice.ts';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks.ts';
 
 import { Login } from '../../types';
@@ -14,7 +14,7 @@ const LogForm = () => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const userDetails = useAppSelector(selectUserDetails);
+  // const userDetails = useAppSelector(selectUserDetails);
 
   const loadingLogin = useAppSelector(isLoginUser);
   const errorLogin = useAppSelector(isLoginError);
@@ -76,10 +76,6 @@ const LogForm = () => {
         {errorLogin &&
           (<Alert severity="warning">
             {errorLogin.message}
-          </Alert>)}
-        {userDetails &&
-          (<Alert severity="success">
-            {userDetails.message}
           </Alert>)}
         <Box component="form" onSubmit={formSubmitHandler} sx={{mt: 3}}>
           <Grid container spacing={2}>

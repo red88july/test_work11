@@ -51,12 +51,12 @@ const UserMenu: React.FC<Props> = ({user}) => {
       <Box display="flex" alignItems="center">
         <Box>
           <Button color="inherit" onClick={handleClick}>
-            Hello, {user.username}
+            Hello, {user.name}!
           </Button>
         </Box>
         <Box sx={boxStyleLink}>
-          <Link href="/new-post" sx={addPost}>
-            Add new post
+          <Link href="/new-product" sx={addPost}>
+            Add new product
           </Link>
         </Box>
       </Box>

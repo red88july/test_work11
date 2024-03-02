@@ -152,6 +152,7 @@ const RegForm = () => {
             fullWidth
             variant="contained"
             sx={{mt: 3, mb: 2}}
+            disabled={loadingRegisteredUser}
           >
             {loadingRegisteredUser ? <CircularProgress /> : 'Register'}
           </Button>

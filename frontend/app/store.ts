@@ -3,17 +3,16 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE,persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import {usersReducer} from '../src/features/users/usersSlice.ts';
-// import {postsReducer} from '../src/features/posts/postsSlice.ts';
 
 const usersPersistConfig = {
-  key: 'forum:users',
+  key: 'magazine:users',
   storage: storage,
-  whitelist: ['usersDetails'],
+  whitelist: ['users'],
 };
 
 const rootReducer = combineReducers({
   users: persistReducer(usersPersistConfig, usersReducer),
-  // posts: postsReducer,
+
 });
 
 export const store = configureStore({
