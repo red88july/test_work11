@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import {User} from '../../../types';
+import { Box, Button, Link, Menu, MenuItem } from '@mui/material';
+import React, { useState } from 'react';
 
-import {Box, Button, Link, Menu, MenuItem} from '@mui/material';
 import {useAppDispatch} from '../../../../app/hooks.ts';
 import {logout} from '../../../features/users/usersThunk.ts';
+import {User} from '../../../types';
 
 const addPost = {
   color: 'inherit',

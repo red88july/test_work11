@@ -4,9 +4,9 @@ import { isAxiosError } from 'axios';
 import { RootState } from '../../../app/store.ts';
 
 import axiosApi from '../../axiosApi.ts';
-import {GlobalError, Product, ProductsMutation} from '../../types';
+import {Product, ProductsMutation, ValidationError} from '../../types';
 
-export const productCreate = createAsyncThunk<ProductsMutation, Product, {  rejectValue: GlobalError, state: RootState }>(
+export const productCreate = createAsyncThunk<ProductsMutation, Product, {  rejectValue: ValidationError, state: RootState }>(
   'products/productCreate',
   async (productPost,  {rejectWithValue, getState}) => {
 

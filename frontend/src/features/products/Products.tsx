@@ -1,9 +1,11 @@
-import {Alert, Box, CircularProgress, Container} from '@mui/material';
-import {useAppDispatch, useAppSelector} from '../../../app/hooks.ts';
-import {useEffect} from 'react';
-import {getProducts} from './productsThunk.ts';
+import { Alert, Box, CircularProgress, Container, Typography } from '@mui/material';
+import { useEffect } from 'react';
+
+import { getProducts } from './productsThunk.ts';
+import { getAllProducts, isErrorLoadProducts, isLoadProducts } from './productsSlice.ts';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks.ts';
 import ProductsList from './ProducltsList';
-import {getAllProducts, isErrorLoadProducts, isLoadProducts} from './productsSlice.ts';
+
 
 const Products = () => {
 
@@ -25,6 +27,9 @@ const Products = () => {
         <Alert severity="warning">
           Loading data is impossible!
         </Alert>}
+      <Typography gutterBottom variant="h4" component="div">
+        <em>All items</em>
+      </Typography>
       <Box display="flex" gap={1} flexWrap="wrap">
         {products.map(product => (
           <ProductsList

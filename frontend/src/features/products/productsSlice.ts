@@ -1,20 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import {GlobalError, ProductsMutation} from '../../types';
+import {ProductsMutation, ValidationError} from '../../types';
 import {getProducts, productCreate} from './productsThunk.ts';
 import {RootState} from '../../../app/store.ts';
 
 interface ProductsState {
   posts: ProductsMutation | null;
   isLoadingProduct: boolean;
-  isErrorProduct: GlobalError | null;
+  isErrorProduct: ValidationError | null;
 
   allProducts: ProductsMutation[];
   isLoadingProducts: boolean;
   isErrorLoadProducts: boolean;
-  // post: Products | null;
-
-  // isLoadViewPost: boolean;
 }
 
 const initialState: ProductsState = {
@@ -25,10 +22,6 @@ const initialState: ProductsState = {
   allProducts: [],
   isLoadingProducts: false,
   isErrorLoadProducts: false,
-
-  // isLoadViewPost: false,
-  // post: null,
-  //
 };
 
 export const productsSlice = createSlice({

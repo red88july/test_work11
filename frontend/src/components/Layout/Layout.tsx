@@ -1,6 +1,6 @@
-import {PropsWithChildren} from 'react';
+import { PropsWithChildren } from 'react';
 import AppToolbar from '../UI/AppToolbar/AppToolbar';
-import {Box, Link, Typography} from '@mui/material';
+import { Box, Link, Typography } from '@mui/material';
 
 
 

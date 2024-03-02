@@ -1,7 +1,8 @@
 import React from 'react';
-import picOfProduct from '../../assets/images/ic-message.png';
-import {apiURL} from '../../constants.ts';
-import {Box, CardMedia, Typography} from '@mui/material';
+import { Box, CardMedia, Typography } from '@mui/material';
+
+import { apiURL } from '../../constants.ts';
+import picOfProduct from '../../assets/images/image_not_available.png';
 
 const stylePostBox = {
   borderRadius: '10px',

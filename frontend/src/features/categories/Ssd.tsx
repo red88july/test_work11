@@ -1,10 +1,12 @@
-import {useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from '../../../app/hooks.ts';
-import {getAllProducts} from '../products/productsSlice.ts';
-import {getProducts} from '../products/productsThunk.ts';
-import {Box, CardMedia, Container, Typography} from '@mui/material';
-import {apiURL} from '../../constants.ts';
-import picOfProduct from '../../assets/images/ic-message.png';
+import {Alert, Box, CardMedia, CircularProgress, Container, Typography} from '@mui/material';
+import React, { useEffect } from 'react';
+
+import { useAppDispatch, useAppSelector } from '../../../app/hooks.ts';
+import {getAllProducts, isErrorLoadProducts, isLoadProducts} from '../products/productsSlice.ts';
+import { getProducts } from '../products/productsThunk.ts';
+
+import { apiURL } from '../../constants.ts';
+import picOfProduct from '../../assets/images/image_not_available.png';
 
 const stylePostBox = {
   borderRadius: '10px',
@@ -21,9 +23,12 @@ const stylePostBox = {
   }
 };
 
-const Ssd = () => {
+const Ssd: React.FC = () => {
   const dispatch = useAppDispatch();
   const products = useAppSelector(getAllProducts);
+
+  const loadingProducts = useAppSelector(isLoadProducts);
+  const errorLoadingProducts = useAppSelector(isErrorLoadProducts);
 
   const ssdProducts = products.filter(product => product.category === 'SSDs');
 
@@ -33,6 +38,15 @@ const Ssd = () => {
 
   return (
     <Container maxWidth="lg" sx={{ marginTop: 15 }}>
+      <Typography gutterBottom variant="h4" component="div">
+        <em>SSDs</em>
+      </Typography>
+      {loadingProducts && (<Box sx={{display: 'flex', justifyContent: 'center'}}>
+        <CircularProgress size={100}/></Box>)}
+      {errorLoadingProducts &&
+        <Alert severity="warning">
+          Loading data is impossible!
+        </Alert>}
       <Box display="flex" gap={1} flexWrap="wrap">
         {ssdProducts.map(product => (
           <Box key={product._id} sx={stylePostBox}>

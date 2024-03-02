@@ -1,7 +1,8 @@
-import {Box, Button} from '@mui/material';
+import { Box, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+
 import regButtonImg from '../../../assets/images/ic-registration.png';
 import logButtonImg from '../../../assets/images/ic-login.png';
-import {Link} from 'react-router-dom';
 
 const regButton = {
   border: '2px solid #FFF',
