@@ -119,10 +119,7 @@ const ProductForm = () => {
                 <MenuItem value="" disabled>Please select category...</MenuItem>
                 <MenuItem value="SSDs">SSDs</MenuItem>
                 <MenuItem value="GPUs">GPUs</MenuItem>
-                <MenuItem value="CPUs">CPUs</MenuItem>
-                <MenuItem value="Motherboards">Motherboards</MenuItem>
                 <MenuItem value="Monitors">Monitors</MenuItem>
-                <MenuItem value="Keyboard">Keyboard</MenuItem>
                 <MenuItem value="Printers">Printers</MenuItem>
               </TextField>
             </Grid>
