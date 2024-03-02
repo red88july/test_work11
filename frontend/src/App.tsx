@@ -10,6 +10,7 @@ import Gpu from './features/categories/Gpu';
 import Ssd from './features/categories/Ssd';
 import Monitors from './features/categories/Monitors';
 import Printers from './features/categories/Printers';
+import ViewProduct from './features/products/ViewProduct.tsx';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/register" element={(<RegForm />)}/>
           <Route path="/login" element={(<LogForm />)}/>
           <Route path="/new-product" element={(<ProductForm />)}/>
+          <Route path="products/:id" element={(<ViewProduct />)}/>
           <Route path="/all-items" element={(<Products />)}/>
           <Route path="/GPUs" element={(<Gpu />)}/>
           <Route path="/SSDs" element={(<Ssd />)}/>

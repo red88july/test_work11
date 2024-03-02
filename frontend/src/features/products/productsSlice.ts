@@ -88,4 +88,4 @@ export const isLoadProducts = (state: RootState) => state.products.isLoadingProd
 export const isErrorLoadProducts = (state: RootState) => state.products.isErrorLoadProducts;
 
 
-export const selectViewPost = (state: RootState) => state.products.product;
+export const selectViewProduct = (state: RootState) => state.products.product;
